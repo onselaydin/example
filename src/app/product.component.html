@@ -1,0 +1,43 @@
+<div class="bg-primary text-white m-2 p-2">
+There are {{ model.getProducts().length }} products in the repository
+
+</div>
+
+<div [class]="getClasses(1)"> <!--class binding-->
+    katalogtaki ilk ürün {{ model.getProductById(1).name }}
+</div>
+<div [class]="getClasses(5)"> 
+    katalogtaki ikinci ürün {{ model.getProductById(5).name }}
+</div>
+
+<button class="btn btn-primary" [class.disabled]="disabled"> Submit </button>
+
+<div class="m-2 p-2" [ngClass]="getClassMap(1)">
+    katalogtaki <span [style.color]="color">ilk ürün</span> {{model.getProductById(1).name }}
+</div>
+<!--fontSize style Binding örneği-->
+<div class="m-2 p-2" [ngClass]="getClassMap(5)">
+    katalogtaki <span [style.fontSize]="fontSize">ikinci ürün</span> {{model.getProductById(5).name }}
+</div>
+<!--koşullu style örneği-->
+<div class="m-2 p-2" [ngClass]="getClassMap(4)">
+    katalogtaki <span [style.color]="color2">ücüncü ürün</span> {{model.getProductById(4).name }}
+</div>
+<!--birden fazla style için product.component.ts içine-->
+<div class="m-2 p-2" [ngClass]="getClassMap(2)">
+    katalogtaki <span [ngStyle]="getStyles(2)">ücüncü ürün</span> {{model.getProductById(4).name }}
+</div>
+
+<!--event binding örneği. domdan ts ye doğru giden binding
+olayları aktarmak için $event
+-->
+<button class="btn btn-primary" (click)="onSubmit($event)">Tıkla</button>
+<br>
+<input type="text" (keyup)="onKeyUp($event)"/>
+<!--
+<div>
+<h2> {{ product.name }} </h2>  one way binding
+<h2 [textContent]="product2.name"> </h2> propery binding örneği
+<img [src]="'assets/img/'+product.imageUrl"> 
+</div>
+-->
