@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app',
@@ -8,7 +9,33 @@ import { Product } from './product.model';
   styleUrls: ['product.component.css']
 })
 export class ProductComponent {
+
+  //posts isimli bir değişken tanımladık.
+posts;
+constructor(private http:HttpClient){
+  //http.get('https://jsonplaceholder.typicode.com/posts')
+  http.get('https://api.themoviedb.org/3/movie/popular?api_key=81a4ae3c015507ef8ffb7b7091b46ee9&language=en-US&page=1')
+  .subscribe(response=> {
+    //console.log(response);
+    this.posts = response;
+  })
+}
+
+title:string = 'Alışan Lojistik Pipe örneği';
+text = 'Ali veli kırkdokuz elli. Bu angular güzelmiş. çalışmaya devam...';
+
+
   model: ProductRepository = new ProductRepository();
+
+  newProduct: Product = new Product();
+
+  get jsonProduct() {
+    return JSON.stringify(this.newProduct);
+  }
+
+  addProduct(p: Product) {
+    console.log("New Product: " + this.jsonProduct);
+  }
   //product: Product = this.model.getProductsById(1);
   //product2: Product = this.model.getProductsById(5);
   disabled=false;
@@ -46,6 +73,14 @@ export class ProductComponent {
     if($event.keyCode === 13){
       console.log("enter çalıştı " + $event.target.value);
     }
+  }
+
+  //email inputun valuesuna aktarılıyor....
+  email = "onselaydin@gmail.com"
+  onKeyUp2() {
+  
+      console.log(this.email);
+
   }
 
 }

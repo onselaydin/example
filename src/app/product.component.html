@@ -34,7 +34,73 @@ olayları aktarmak için $event
 <button class="btn btn-primary" (click)="onSubmit($event)">Tıkla</button>
 <br>
 <input type="text" (keyup)="onKeyUp($event)"/>
-<!--
+<br>
+<input type="text" [value]="email" (keyup)="onKeyUp2()"/>
+<br>
+<!--two way binding örneği. ngModel çift taraflı veri aktarımını sağlıyor.-->
+<input type="text" [(ngModel)]="email" (keyup)="onKeyUp2()"/>
+
+<!--pipe örneği-->
+<p>{{ title | uppercase }}</p>
+<br>
+<!--custom pipe örneği summary.pipe.ts oluşturduk ve çağırdık. module.ts ye eklemeyi unutma-->
+<p>{{ text | summary }}</p>
+<br>
+
+<div *ngIf="model.getProducts().lenght>0; then productList else noProduct"></div>
+<ng-template #productList>
+   There are {{ model.getProducts().lengt }} products in the repository
+</ng-template>
+<ng-template #noProducts>
+    There are no products in the repository. 
+ </ng-template>
+
+ <!-- aşağıdaki şekilde noproduct ü tekrar kullanabiliriz-->
+ <ng-template [ngTemplateOutlet]="noProduct"></ng-template>
+
+<br>
+<!--custom directive örneği-->
+<input type="text" appInputEmail>
+
+<br>
+
+<div class="bg-info text-white m-2 p-2">
+    {{ jsonProduct }}
+</div>
+
+<form>
+<div class="form-group">
+    <label>Name</label>
+    <input required [(ngModel)]="newProduct.name" name="pName" #name="ngModel"  class="form-control"><!--(change)="log(name)"-->
+    <div class="alert alert-danger" *ngIf="!name.valid && name.touched">
+        Name is required
+    </div>
+</div>
+<div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control"></textarea>
+</div>
+<div class="form-group">
+    <label>Price</label>
+    <input class="form-control">
+</div>
+<div class="form-group">
+    <label>ImageUrl</label>
+    <input class="form-control">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+
+<ul>
+    <li *ngFor="let post of posts">
+        {{post.title}}
+    </li>
+</ul>
+ <!--
+<admin-products></admin-products>
+
 <div>
 <h2> {{ product.name }} </h2>  one way binding
 <h2 [textContent]="product2.name"> </h2> propery binding örneği
