@@ -11,14 +11,28 @@ import { HttpClient } from '@angular/common/http';
 export class ProductComponent {
 
   //posts isimli bir değişken tanımladık.
-posts;
-constructor(private http:HttpClient){
-  //http.get('https://jsonplaceholder.typicode.com/posts')
-  http.get('https://api.themoviedb.org/3/movie/popular?api_key=81a4ae3c015507ef8ffb7b7091b46ee9&language=en-US&page=1')
+posts: [any];
+private url = 'https://jsonplaceholder.typicode.com/posts'
+constructor(private http:HttpClient) {
+  http.get('https://jsonplaceholder.typicode.com/posts')
+  //http.get('https://api.themoviedb.org/3/movie/popular?api_key=81a4ae3c015507ef8ffb7b7091b46ee9&language=en-US&page=1')
   .subscribe(response=> {
     //console.log(response);
-    this.posts = response;
+    this.posts = <[any]>response;
   })
+}
+//dom tarafından veri almanın diğer bir yoludur. Normalde input.value şeklinde alırdık.
+createPost(input: HTMLInputElement) {
+  const post = {title: input.value};
+  input.value='';
+  //splice : dizinin başına bir eleman ekler.
+  this.http.post(this.url,JSON.stringify(post))
+    .subscribe(response => {
+      post['id'] = response['id'];
+      this.posts.splice(0, 0, post);
+      console.log(response);
+    })
+
 }
 
 title:string = 'Alışan Lojistik Pipe örneği';
