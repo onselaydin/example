@@ -13,6 +13,7 @@ export class ProductComponent {
   //posts isimli bir değişken tanımladık.
 posts: [any];
 private url = 'https://jsonplaceholder.typicode.com/posts'
+private apiUrl = 'http://localhost:55155/api/login/LoginControl';
 constructor(private http:HttpClient) {
   http.get('https://jsonplaceholder.typicode.com/posts')
   //http.get('https://api.themoviedb.org/3/movie/popular?api_key=81a4ae3c015507ef8ffb7b7091b46ee9&language=en-US&page=1')
@@ -33,6 +34,20 @@ createPost(input: HTMLInputElement) {
       console.log(response);
     })
 
+}
+
+test(){
+  console.log('test');
+  let username = "onsel";
+  let password = "1234";
+  const user = {
+    usr: 'onsel',
+    pass: '1234'
+  }
+  this.http.post(this.apiUrl, JSON.stringify({ usr: username, pass: password }))
+      .subscribe(response => {
+        console.log(response);
+      })
 }
 
 title:string = 'Alışan Lojistik Pipe örneği';

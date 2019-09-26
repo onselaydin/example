@@ -1,0 +1,120 @@
+npm install -g @angular/cli komutu ile angular kurulur
+
+yeni proje için
+ng new projeadi
+
+npm install bootstrap
+
+konsept komponent mantığında dönüyor. src/app içinde dönmekte.
+
+
+app klasörü bir modül
+index.html deki <app-root> çağırıyor
+src/main.ts dosyası içinde AppModule ile tanımlıyoruz.(import {AppModule} from './app/app.module';
+
+başlangıç modülünü belirtmek için platformBrowserDynamic olan satırda belirtiliyor
+Default olarak AppModule olmakta.
+
+
+index.html deki selector app.component.ts dosyasındaki selector dan belirleniyor.
+
+YENİ COMPONENT EKLEMEK
+app klasörü içine movies isimli klasör açtık.
+
+CLI ile COMPONENT EKLEMEK
+movieapp>ng generate component movie
+yada kısaltması
+>ng g c movie
+
+vs.code da ctrl + shift + L yapınca kursörün olduğu metni tüm sayfada değiştirmek için seçer.
+
+SERVİS EKLEMEK
+>ng g s servisadi
+
+DİREKTİF EKLEMEK
+>ng g d direktifadi
+
+https://rxjs-dev.firebaseapp.com/
+ROUTE EKLEMEK
+app.component.ts ye
+import { Routes } from '@angular/router';
+
+MODÜL EKLEMEK -ROUTE EKLEMEK
+>ng g m moduladi --flat --module=app 
+Not: Flat parametresi modülün app kökünde dosya olarak oluşmasını sağlar. Aksi halde klasör oluşturacak.
+	 --module parametresi app.module.ts içine modülü import edecek.
+	 
+PS C:\MovieApp> ng serve --open //browserla beraber açar
+
+örnek api servisleri
+http://jsonplaceholder.typicode.com
+https://jsonplaceholder.typicode.com/users
+
+themoviedb api
+81a4ae3c015507ef8ffb7b7091b46ee9
+https://api.themoviedb.org/3/movie/550?api_key=81a4ae3c015507ef8ffb7b7091b46ee9
+
+https://api.github.com/users/sadikturan
+https://api.github.com/users/sadikturan/repos
+
+Apilere bağlanmak için 
+import { HttpClientModule } from '@angular/common/http';
+
+npm install angular-in-memory-web-api --save
+
+JSON tipinde veriyi almak için 
+update(movie: Movie):Observable<any> {
+    const httpOptions={
+      headers: new HttpHeaders({'Content-Type':'application/json'}) //option daki şekilde kullanılır.
+    }
+    return this.http.put(this.apiMoviesUrl, movie, httpOptions);
+}
+-------------------
+Browserda İleri geri vs yapmak için
+import { Location } from '@angular/common'; satırı eklenir.
+her hangi bir metod içinde kullanımı
+save(): void {
+    this.movieService.update(this.movie)
+    .subscribe(()=> {
+      this.location.back();  // bu satırdaki gibi kullanılır. Bir önceki sayfaya yönlendirir.
+    });
+  }
+--------two way binding
+bu tekniği kullanmak için app.module.ts ye
+import { FormsModule } from '@angular/forms';  import et.
+
+email = "onselaydin@gmail.com"
+  onKeyUp2() {
+  
+      console.log(this.email);
+
+}
+<input type="text" [(ngModel)]="email" (keyup)="onKeyUp2()"/>
+
+----------------------PIPE
+https://angular.io/api?type=pipe
+--Gelen veriyi formatlama
+title:string = 'Alışan Lojistik';
+
+https://github.com/angular/angular.js/tree/master/src/ngLocale
+-----------------------------------------
+--------DIRECTIVES------------------
+https://angular.io/api?type=directive
+ngIf,ngSwitch,ngFor
+<div *ngIf="model.getProducts().lenght>0"></div>
+ngfor bootstrap card componenti kullanabiliriz
+https://getbootstrap.com/docs/4.3/components/card/
+
+Change Detection = ngfor ile bastığımız listeye silme, ekleme olduğunda güncellenmesi.
+ngTemplate = oluşturduğumuz bir ekranı başka bir yerde kullanacağımız zaman kod tekrarı olmadan eklemek içindir.
+-------------------------------------
+bir input text de konumlandığında focus yada ayrıldığında blur olayları gerçekleşir.
+Bunları yakalamak için HostListener kullanılır.
+import { Directive,HostListener } from '@angular/core';
+---
+@HostListener('focus') onFocus(){
+	console.log('focused');
+}
+@HostListener('blur') onBlur(){
+	console.log('blured');
+}
