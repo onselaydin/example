@@ -1,3 +1,5 @@
+anydesk id : 690 276 271
+
 npm install -g @angular/cli komutu ile angular kurulur
 
 yeni proje için
@@ -38,6 +40,8 @@ https://rxjs-dev.firebaseapp.com/
 ROUTE EKLEMEK
 app.component.ts ye
 import { Routes } from '@angular/router';
+
+
 
 MODÜL EKLEMEK -ROUTE EKLEMEK
 >ng g m moduladi --flat --module=app 
@@ -118,3 +122,8 @@ import { Directive,HostListener } from '@angular/core';
 @HostListener('blur') onBlur(){
 	console.log('blured');
 }
+------------------------------------------
+https://www.gencayyildiz.com/blog/asp-net-core-angular-7-web-api-token-authentication-kullanimi/
+--------------------------------------------
+Cross için cromu aşağıdaki şekilde aç
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
