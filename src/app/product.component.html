@@ -47,9 +47,9 @@ olayları aktarmak için $event
 <p>{{ text | summary }}</p>
 <br>
 
-<div *ngIf="model.getProducts().lenght>0; then productList else noProduct"></div>
+<div *ngIf="model.getProducts().lenght > 0; then productList else noProduct"></div>
 <ng-template #productList>
-   There are {{ model.getProducts().lengt }} products in the repository
+   There are {{ model.getProducts().lenght }} products in the repository
 </ng-template>
 <ng-template #noProducts>
     There are no products in the repository. 

@@ -127,3 +127,8 @@ https://www.gencayyildiz.com/blog/asp-net-core-angular-7-web-api-token-authentic
 --------------------------------------------
 Cross için cromu aşağıdaki şekilde aç
 chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+-------------------------------------------------
+>ng test
+>ng build --prod
+https://www.c-sharpcorner.com/article/develop-test-and-deploy-the-angular-project-in-iis-using-angular-cli-and-visual/
+-----------------------------------------------------
