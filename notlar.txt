@@ -83,6 +83,21 @@ save(): void {
       this.location.back();  // bu satırdaki gibi kullanılır. Bir önceki sayfaya yönlendirir.
     });
   }
+---------------------binding geçiştleri
+https://www.c-sharpcorner.com/article/angular-one-and-two-way-data-bindings-with-examples/
+property binding,class binding, style,event,keyup event binging, one way and two way binding
+------one way binding 
+class dan arayüze veri aktarımı
+import { FormsModule } from '@angular/forms';  import et.
+
+email = "onselaydin@gmail.com"
+  onKeyUp2() {
+  
+      console.log(this.email);
+
+}
+
+<input [value]="email" (keyup.enter)="onKeyUp()"/>
 --------two way binding
 bu tekniği kullanmak için app.module.ts ye
 import { FormsModule } from '@angular/forms';  import et.
@@ -131,4 +146,53 @@ chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 >ng test
 >ng build --prod
 https://www.c-sharpcorner.com/article/develop-test-and-deploy-the-angular-project-in-iis-using-angular-cli-and-visual/
+yada
+Build için terminal + run task + npm buildi seçip projede dist klasöründe.
+index.html içini .net içindeki index.cshtml e aktarıcağız. Daha sonra olşuan klasörüdeki css js leri bir klasöre atıp
+yollarını düzeltmek gerekli.
+-------------------------------------------------------------------------
+$("input[type=text]").keyup(function(){
+  $(this).val( $(this).val().toUpperCase() );
+});
+
+$('input[type=text]').val (function () {
+    return this.value.toUpperCase();
+})
+-----------------------------------------------
+
+  <div class="col-11"><input id="@Model.GetElementId(alos.Web.Areas.TMS.Models.FormType.Edit, "PLATE_NO_input")" name="@Model.GetElementId(alos.Web.Areas.TMS.Models.FormType.Edit, "PLATE_NO_input")" type="text" class="k-select-full k-textbox" data-bind="value: PLATE_NO" required validationMessage=" " onchange="platecontrol($('#@Model.GetElementId(alos.Web.Areas.TMS.Models.FormType.Edit, "PLATE_NO_input")'))" /></div>
+  
+  https://www.oracle.com/technical-resources/articles/database/python-with-database-11g.html
+  https://www.geeksforgeeks.org/oracle-database-connection-in-python/
+----------------------------------
+app klasörünün içine product.ts isimli dosya aç
+export dışarı açmak anlamına geliyor.
+export const product = [
+	{ id:1, name: 'ürün 1' }
+]
+--------------------Parametre Route
+https://www.c-sharpcorner.com/article/overview-of-route-parameters-in-angular/
+app.module.ts const appRutes içinde 
+{ path: 'products/:id', component: ProductComponent }
+product sayfasına
+import { ActivatedRoute } from '@angular/route';
+contructor içine (private route: ActivatedRoute)
+ngOninit içine
+let id = this.route.snapshot.paramMap.get('id'); //buradaki id moduldeki route tanımındaki id.
+------------------------Observable Route Param
+https://www.c-sharpcorner.com/article/using-parammap-observable-for-handling-route-in-angular/
+ngOninit içine
+this.route.paramMap
+	.subscribe(params=> {
+	//console.log(params);
+	let id= +params.get('id');
+	this.selectedProduct = products.find(i=>i.id===id);
+})
+
+html de 
+<a [routeLink]="['/products',2]">detay</a>
+--------------------queryparam route
+https://alligator.io/angular/query-parameters/
+<a class="btn btn-primary" routerLink="/products" [queryParams]="{page:1,order: 'bestselling'}">En Çok SAtanlar</a>
 -----------------------------------------------------
+
