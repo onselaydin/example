@@ -1,0 +1,69 @@
+vs.net 2019 gerekli
+eklenti olarak .net core cross-platform development ekli olması gerekli.
+Yeni proje oluştur + asp.net core web application + webapi şablonunu seç
+Controller ilk isteğin alındığı yerdir. 
+
+[Route("api/[Controller])]  //domaini karşılar. http://localhost/api/controlleradimiz.
+köşel parantez içi Controller parametredir.
+
+ValuesController iyi bir örnektir. Kenarda kalsın.
+
+nette Postman indir kur. post get put delete vs test için kullanılır.
+
+https://caylakyazilimci.com/post/mssql-localdb-kurulumu
+yeni localdb kurunca aşağıdaki yola atıyor.
+C:\Users\oncell\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB
+YEni tablo aç Id ve Name isimli iki alan olsun. Id alanı identity olsun
+
+entityframework, nhibernate, depper
+
+
+--model--
+Projeye sağ click Models isimli klasör oluştur. içine Value isimli bir class ekle
+PascalCase kullanmaya özen göster.
+
+public class Value{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+
+--dbcontext--
+Yeni bir klasör oluştur ismi Data olsun. Contexti buraya atacağız.
+Bu klasörün içine DataContext isimli bir class oluştur.
+public class DataContext:DbContext den türesin. using Microsoft.EntityFrameworkCore;  nuget dan kur.
+class içine ctor yazıp tab ile constractor oluşturacağız.
+public DataContext(DbContextOptions<DataContext> options):base(options) {}
+
+constractorun altına public DbSet<Value> Values { get; set; } oluştur.
+
+--appsettings--
+appsettings.json a git. Bu mvc deki web.config gibidir.
+"ConnectionStrings": {
+    "DefaultConnection":"data source=(localdb)\\oncell; initial catalog=SehirRehberi; Trusted_Connection=true"
+
+},
+
+--Startup.cs e gel--
+ConfigureServices metoduna gel.
+services.AddDbContext<DataContext>(x=>x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")))
+
+
+--Controller--
+add new api controller... Adını Values yap.
+class içinde 
+private DataContext _context;
+public ValuesContoller(DataContext context)
+{
+    _context = context;
+}
+ilk get metodunu yazalım.
+[HttpGet]
+public ActionResult GetValues()
+{
+    var values = _context.Values.ToList();
+    return Ok(values);
+}
+//ActionResult 200, 400 gibi http cevaplarının dönmesini sağlayabiliriz. ör 200 için return Ok dedik.
+
+https://stackoverflow.com/questions/50935730/asp-net-core-2-1-kestrel-how-to-disable-https
+

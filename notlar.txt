@@ -1,4 +1,10 @@
-anydesk id : 690 276 271
+vs.code kur. nodejs ve angularcli kur
+code için eklenti önerileri: angular files(sağ click component,servis oluşturma),
+Bracket Pair Colorizer (kodları renklendirir) 
+Path Intellicense (path yazarken yardımcı olur.)
+Prettier - Code formatter
+TypeScript Hero
+
 
 npm install -g @angular/cli komutu ile angular kurulur
 
@@ -202,3 +208,6 @@ https://alligator.io/angular/query-parameters/
 <a class="btn btn-primary" routerLink="/products" [queryParams]="{page:1,order: 'bestselling'}">En Çok SAtanlar</a>
 -----------------------------------------------------
 
+Form Validation için
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+constructor(private formBuilder:FormBuilder) {}
