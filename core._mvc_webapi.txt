@@ -67,3 +67,13 @@ public ActionResult GetValues()
 
 https://stackoverflow.com/questions/50935730/asp-net-core-2-1-kestrel-how-to-disable-https
 
+--Cors--
+Cors problemi için Startup.cs'a gel.
+ConfigureServices metoduna gel ve en sonuna aşağıdaki kodu ekle.
+services.AddCors();
+Configure metoduna gel aşağıdaki kodu ekle.
+app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+
+yada chromu başlat çalıştırdan aşağıdaki şekilde aç.
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+

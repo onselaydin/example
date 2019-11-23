@@ -61,6 +61,7 @@ Not: Flat parametresi modülün app kökünde dosya olarak oluşmasını sağlar
 	 --module parametresi app.module.ts içine modülü import edecek.
 	 
 PS C:\MovieApp> ng serve --open //browserla beraber açar
+ng server --port 1111 --open diyerek istediğimiz portta açar.
 
 örnek api servisleri
 http://jsonplaceholder.typicode.com
