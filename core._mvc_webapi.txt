@@ -77,3 +77,94 @@ app.UseCors(x=>x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredent
 yada chromu başlat çalıştırdan aşağıdaki şekilde aç.
 chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 
+--Repository--
+Data klasörüne sağ click add new + Interface + adını IAppRepository yap.
+public interface IAppRepository
+{
+    void Add<T>(T entity) where T:class;
+    void Delete<T>(T entity) where T : class;
+    void SaveAll();
+
+    List<City> GetCities();
+    List<Photo> GetPhotosByCity(int id);
+    City GetCityById(int cityId);
+    Photo GetPhoto(int id);
+}
+
+--implementation--
+Yine Data klasörüne sağ click + add new class + adı AppRepository yap.
+IAppRepository den :IAppRepository den implement olacak.
+soldan bir ampül çıkacak. implement interface komutuna tıklıyoruz.
+ne kadar tanımlı interdace varsa notimlemen şeklinde ekleyecek.
+Tek tek bunları dolduracağız.
+public void Add<T>(T entity)
+{
+    throw new NotImplementedException();
+}
+contextimizi burayada class içine controllerdaki gibi ekliyoruz
+private DataContext _context;
+public AppRepository(DataContext context)
+{
+    _context = context;
+}
+
+public void Add<T>(T entity)
+{
+    _context.Add(entity);
+    //throw new NotImplementedException();
+}
+
+--api controller oluştur--
+class içine AppRepository inject edelim.
+private IAppRepository _appRepository;
+public CitiesController(IAppRepository appRepository)
+{
+    _appRepository = appRepository;
+}
+public ActionResult GetCities()
+{
+    var cities = _appRepository.GetCities();
+    return Ok(cities);
+}
+
+--Dto-- data trasformation
+Dto veri getirirlen istediğimiz alanları getirebilmemiz için kullanılır.
+1.yöntem
+var cities = _appRepository.GetCities().Select(x=>x.Name); // bu sadece name alanını listeleyecek.
+2.Yöntem
+Bunun için proje kökünde Dtos isimli bir klasör aç
+yeni bir class oluştur.. adına CityForListDto diyelim.
+public class CityForListDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string PhotoUrl { get; set; }
+    public string Description { get; set; }
+
+}
+var cities = _appRepository.GetCities().Select(x=>new CityForListDto{Description =c.Description, Name = c.Name}); 
+
+3.yöntem.
+nugettan AutoMapper ve AutoMapper.Extensions kur.
+Proje kökünde helpers isimli bir klasör oluştur.
+YEni class oluştur adına AutoMapperProfiles ver.
+ 
+
+
+postgressql vs.code eklentisi.
+https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql
+https://gokhanatil.com/2014/09/configuring-oracle-sql-developer-for-postgresql.html
+
+sqldeveloper için driver https://jdbc.postgresql.org/download.html
+
+docker run -d -p 5432:5432 --name oncell -e POSTGRES_USER=oncell -e POSTGRES_PASSWORD=Oncell123 -e POSTGRES_DB=testdb postgres
+docker container exec -it oncell bash
+psql -d testdb -U  user -W
+# \l  //db listesi
+# \dt // aktif db talolarını listeler.
+# SELECT version();
+# \?  //help
+# \q  //quit postgres
+# createdb VERITABANI_ADI
+# \c veritabanı //bir veritabanına bağlanmak.
+https://mertcangokgoz.com/postgresql-komut-ve-kisayollari/
