@@ -75,9 +75,10 @@ https://api.github.com/users/sadikturan
 https://api.github.com/users/sadikturan/repos
 
 Apilere bağlanmak için 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 npm install angular-in-memory-web-api --save
+constructor(private http: HttpClient)
 
 JSON tipinde veriyi almak için 
 update(movie: Movie):Observable<any> {
@@ -212,3 +213,24 @@ https://alligator.io/angular/query-parameters/
 Form Validation için
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 constructor(private formBuilder:FormBuilder) {}
+https://jasonwatmore.com/post/2019/06/14/angular-8-reactive-forms-validation-example
+
+
+--Alertfyjs--
+https://alertifyjs.com/
+npm install alertifyjs
+globaldeki style.css dosyasına import işlemi 
+@import '~alertifyjs/build/css/alertify.min.css';
+@import '~alertifyjs/build/css/themes/bootstrap.min.css';
+angular.json tanımlaması "scripts": ["./node_modules/alertifyjs/build/alertify.min.js"]
+Herhangi bir componentte importların altına
+
+declare let alertify:any;
+
+bir metod içinde kullanım...
+addToChart(product){
+  alertify.success("added")
+}
+
+Free Website Templates
+https://w3layouts.com/
