@@ -1,0 +1,138 @@
+<div class="content">   // content içeriği ortalar
+<div class="row">  // satır işlemiş için kullanılır.
+
+--Grid yapısı--
+.col-   576 pixelden daha düşük ekranlar için kullanılır. 
+.col-sm 576 pixelden büyük ekranlarda çalışacak. Telefonumuza karşılık gelir.
+.col-md 768 pixelden büyük ekranlarda çalışacak. tabletlere karşılık gelir.
+.col-lg 992 pixelden büyük ekranlarda çalışacak. bilgisayar ve notebook ekranları için kullanılır.
+.col-xl 1200 pixelden büyük ekranlarda çalışacak. daha büyük ekranlarada kullanılır.
+
+Not: bootstrap ekranlarımızı 12 sütuna ayırır.
+örnek: Bu örnekte satırı 3 eşit parçaya bölmüş olduk.
+<div class="row">
+    <div class="col-sm-4" style="background-color:lavender">1.sütun</div>
+    <div class="col-sm-4" style="background-color:lavenderblush">2.sütun</div>
+    <div class="col-sm-4" style="background-color:lavender">3.sütun</div>
+</div>
+
+örnek: 1200 px ve üstünde 3 eşit parça olsun. 992 de ilk sütun 6 diğer iki sütun 3 olsun. 
+       tablet oluncada ilk sütun3 ikinci 5 üçüncü 4 olsun.
+       telefon içinde hepsini kaplasın browser büyütüp küçülterek anlarız.
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-3 col-sm-12" style="background-color:lavender">1.sütun</div>
+    <div class="col-xl-4 col-lg-3 col-md-5 col-sm-12" style="background-color:lavenderblush">2.sütun</div>
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-12" style="background-color:lavender">3.sütun</div>
+</div>
+
+--Text Tipleri--
+<h1 class"display-1"> display 1 </h1> 1 den 4 e kadardır. hangi etikete yazarsan yaz kendisi çalışır.
+<p class="font-weight-bold text-center"> bold </p> //kalın yapar text-center ortalar
+<p class="font-weight-normal text-left"> bold </p> //normal yapar text-left sol
+<p class="font-weight-light text-right"> bold </p> //açık renk yapar text-right sağa hizalar
+<p class="font-italic small"> bold </p> //yazıyı italik yapar. small yazıyı iyice küçültür.
+<p class="text-uppercase"> büyük harf yapar </p>
+<p class="text-lowercase"> küçük harf yapar </p>
+<p class="text-capitalize"> baş harfleri büyük harf yapar </p>
+
+--Listeler--
+<ul class="list-unstyled">  //liste stillerini kaldırır..
+list-inline //ul için kullanılır.
+list-inline-item //li için yan yana
+
+--Renkler--
+text-primary - mavi text-success - yeşil . diğer renkler sitede var...
+https://www.w3schools.com/bootstrap4/bootstrap_colors.asp
+
+bg-primary -- arka planı mavi yapar...
+
+--Tablolar--
+class="table" tablomusu daha şık gösterecektir.
+class="table table-bordered" daha çerçeveli olacak.
+class="table table-streped" bir satır koyu diğer satır açık olacak.
+class="table table-hover" satırın üzerine geldiğimizde satır renklenecektir.
+<thead class="thead-dark> tablo başlıklarını karanlık yapacak
+<thead class="thead-light> tablo başlıklarını açık renk yapacak
+tr lerede class verebiliriz. örneğin  <tr class="table-success">
+<div class="table-responsive></div> tablomu bu taglar arasına alırsam küçük ekranlarda da daralacaktır.
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark>
+            <tr>
+                <th>Adlar</th>
+                <th>Soyadlar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-success">
+                <td>Ali</td>
+                <td>Gel</td>
+            </tr>
+            <tr>
+                <td>Veli</td>
+                <td>Gel</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+--jumbotron ve İmage--
+jumbotron bize sade bir başlık alanı oluşturur.
+class="text-center" jumbotron içine ortalar...
+img tagı için class="rounded" resmin köşelerini yuvarlak yapar.
+class="rounded-circle" resmi yuvarlak yapar...
+class="img-thumbnail"  resmi çerçeveli gösteriyor.
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h2 class="text-center">Başlık</h2>
+        <p>paragraf</p>
+    </div>
+</div>
+
+--Alert--
+&times; bu bize bir çarpı işareti döner.
+
+<div class="container">
+    <div class="alert alert-success">
+        <strong> Alert </strong> oluşturuldu.
+    </div>
+    kapatılabilir alert Not: popper.js layout refere et. fade show =animasyonlu kapatır.
+    <div class="alert alert-primary alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert"> &times;</button>
+        <strong> Alert </strong> oluşturuldu.
+    </div>
+
+</div>
+
+--Butonlar--
+<button class="btn btn-danger btn-lg">sil</button>
+bootstrap 4 ile outline özelliği geldi.
+<button class="btn btn-outline-danger">sil</button>
+Not: a linkede button classı verebilirsin.
+bulunduğu div kadar genişleyen button için <input type="submit" class="btn-block" value="çalıştır"/>
+
+--buton grupları--
+class="btn-group-vertical //buda buttonları yukarıdan aşağı dizer.
+
+<div class="btn-group-lg>
+arasına butonları ekle...
+</div>
+dropdown şeklinde menu grubu
+<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">CCC</button>
+<div class="dropdown-menu">
+    <a class="dropdown-item" href="#">c1</a>
+    <a class="dropdown-item" href="#">c2</a>
+</div>
+
+https://fontawesome.com/
+bunun css ini layouta ekle...
+
+--badges(rozet,işaret)--
+span içinde kullanılır. etiket gibi bişey
+kullanıldığı etiketin içerisine göre şekil değiştirir.
+<span class="badge badge-secondary">Yeni</span>
+https://www.w3schools.com/bootstrap4/bootstrap_badges.asp
+
