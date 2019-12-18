@@ -1,0 +1,201 @@
+Redis’in yüksek seviye veri yapılarını saklama ve kullanma yeteneğidir.
+http://cagataykiziltan.net/redis/redis-nedir/
+https://redis.io/download
+https://github.com/microsoftarchive/redis/releases
+--gui--
+https://tableplus.com/
+https://protonail.com/keylord/download
+
+--docker kurulumu--
+docker run -d --name Redis -p 6379:6379 redis
+
+
+# redis-cli -v
+# redis-cli
+127.0.0.1> set foo bar  --Bir veri ekledik
+127.0.01.> get foo  -- eklediğimiz veriyi getiriyoruz.
+
+--.net örnek--
+yeni proje aç -- dotnet new mvc -o redisCore
+redis paketini ekle -- dotnet add package ServiceStack.Redis.Core
+yada PM> Install-Package ServiceStack.Redis.Core
+     PM> Install-Package Microsoft.Extensions.Caching.Redis
+
+startup.cs ye redis server tanımlamak
+public void ConfigureServices(IServiceCollection services)
+{
+     services.Configure<CookiePolicyOptions>(options =>
+     {
+           options.CheckConsentNeeded = context => true;
+           options.MinimumSameSitePolicy = SameSiteMode.None;
+     });
+     services.AddDistributedRedisCache(options =>
+     {
+            options.InstanceName = "RedisNetCoreSample";
+            options.Configuration = "localhost:6379"; //Your Redis Connection
+      });
+
+      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+}
+
+--Model oluştur
+public class Personal
+{
+     public int ID { get; set; }
+     public string Name { get; set; }
+     public string Surname { get; set; }
+     public int Age { get; set; }
+}
+
+--Projeye RedisRepository klasörü oluştur içine IRedisService.cs
+public interface IRedisService
+{
+     List<Person> GetAll(string cachekey);
+     Person GetById(string cachekey);
+}
+
+--Yine aynı klasöre RedisManager.cs
+public class RedisManager : IRedisService
+{
+    public List<Person> GetAll(string cachekey)
+        {
+            using (IRedisClient client = new RedisClient())
+            {
+                List<Person> dataList = new List<Person>();
+                List<string> allKeys = client.SearchKeys(cachekey);
+                foreach (string key in allKeys)
+                {
+                    dataList.Add(client.Get<Person>(key));
+                }
+                return dataList;
+            }
+        }
+
+        public Person GetById(int personId, string cachekey)
+        {
+            using (IRedisClient client = new RedisClient())
+            {
+                var redisdata = client.Get<Person>(cachekey);
+
+                return redisdata;
+            }
+        }
+}
+
+--bu iki sınıfı startup.cs deki ConfigureServices en altına ekle
+services.AddScoped<IRedisService, RedisManager>();
+
+--home controllerda set ile veri ekliyoruz
+private readonly IRedisService _redisService;
+
+public HomeController(IRedisService redisService)
+{
+      _redisService = redisService;
+   
+     using (IRedisClient client = new RedisClient())
+     {
+           if (client.SearchKeys("Person*").Count == 0)
+           {
+                 var personvalue = new Person();
+                 personvalue.ID = 1;
+                 personvalue.Name = "Emrah";
+                 personvalue.Surname = "Akın";
+                 personvalue.Age = 40;
+
+                 var cachedata = client.As<Person>();
+                 cachedata.SetValue("Person"+personvalue.ID, personvalue);
+
+            }
+      }
+}
+
+-- HomeController da tüm verileri getiren metodumuzu yazıyoruz.
+public IActionResult Index()
+{
+      const string cacheKey = "Person*";
+      var redisdata = _redisService.GetAll(cacheKey);
+
+      return View(redisdata);
+}
+
+--Index.cshtml
+@model IEnumerable<NetCoreRedis.Models.Person>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                SurName
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Home", new { id = item.ID }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+--HomeController id ye göre personeli getirtiyoruz.
+
+public IActionResult Detail(int Id)
+{
+    string cacheKey = "Person"+Id;
+    var redisdata = _redisService.GetById(cacheKey);
+
+     return View(redisdata);
+}
+
+--Detail.cshtml
+@model NetCoreRedis.Models.Person
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h3><b>Person:</b></h3>
+
+<table class="table">
+    <tr>
+        <td>Ad:</td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>Soyad:</td>
+        <td>@Model.Surname</td>
+    </tr>
+    <tr>
+        <td>Yaş:</td>
+        <td>@Model.Age</td>
+    </tr>
+</table>
+
+
+https://www.erkanliman.com/api/net-core-ve-redis-kullanarak-distributed-cache-mekanizmasi-kurma.html
+ab – Apache HTTP sunucusu başarım ölçme aracı” ile sunucumuza yük bindirelim.
+httpd-2.4.25-x64-vc14-rl\apache24\bin> .\ab.exe -n 300 -c 15 http://localhost:57967/api/students/1
+benchmark_normal.png
