@@ -1,0 +1,7 @@
+kurulum için https://git-scm.com/
+arayüz için https://git-scm.com/downloads/guis
+github arayüz kurulumu için https://desktop.github.com/
+
+https://github.blog/2013-01-24-zen-writing-mode/
+
+milestone = işlerin bitiş zamanları yeni Issue yazarken atanabiliyor.

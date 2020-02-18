@@ -8,7 +8,7 @@ TypeScript Hero
 
 npm install -g @angular/cli komutu ile angular kurulur
 
-yeni proje için
+herşey boş bir klasör açıp içine yeni proje açılarak başlıyor...cmd mkdir yeniklasör...
 ng new projeadi
 
 npm install bootstrap
