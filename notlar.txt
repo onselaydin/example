@@ -234,3 +234,21 @@ addToChart(product){
 
 Free Website Templates
 https://w3layouts.com/
+
+
+--json server--
+restfull backend için kullanılır.
+npm i json-server --save-dev
+publish'in bir parçası olmaması için Bunları dependencies den silip dev içine atıyoruz.
+    "json-server": "^0.15.1",
+    "jsonwebtoken": "^8.5.1",
+Modeller için app içine model isimli bir klasör oluştur.
+model içine model.modules.ts dosyası oluştur.
+projenin kök klasörüne data.js dosyası oluştur...
+package.json dosyası script içine 
+  "json": "json-server data.js -p 3500"   // 3500 nolu portdan data.js'i restfull olarak servis etmek..
+npm run json diyerek çalıştırırız.
+
+--json authentication--
+kimlik denetimi login işlemleri için kullanılacak...
+npm i jsonwebtoken

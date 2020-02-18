@@ -1,0 +1,66 @@
+.net core ile nodejs kur. dotnet kur https://dotnet.microsoft.com/download
+vs.code c#, c# extensions ve NuGet Package Manager eklentilerini kur.
+SQL Server (mssql) extensions kur.
+
+.NET Core Extension Pack eklentisinide kur.
+
+ctrl + veya - ile uzayıp kısaltabiliriz.
+c:\> dotnet --version
+
+dotnet --help
+
+dotnet new --help
+mkdir CourseApp
+CourseApp> dotnet new mvc
+CourseApp> dotnet run
+
+yeni boş bir core projesi açmak için
+mkdir MusicApp
+cd MusicApp
+MusicApp> dotnet new web
+içine mkdir ile Controllers, Models, Views klasörlerini oluştur.
+cd ile Views klasörüne gir MusicApp/Views> dotnet new viewimports  ve dotnet new viewstart
+
+launchSettings.json dosyasında ASPNETCORE_ENVIRONMENT değişkeni şu an Development durumda. 
+Bunu en son Production yap. Kullanıcı hata sayfalarını görmesin.
+
+Controller eklemek için Controller klasörüne sağ click new C# class diyoruz ve adına örneğin HomeController diyoruz.
+
+Ctrl + . (nokta) ya bastiğimzda referans eklememizi sağlar.
+
+ahmet.goktas@gmail.com
+angelandevil
+
+MusicApp> dotnet watch run
+
+--Core içinde NPM kullanımı--
+MusicApp> npm init --yes    //package.json dosyası eklendi..
+MusicApp> npm i bootstrap   // bootstrap kütüphanesi eklendi.
+
+_Layout.cshtml
+
+<header></header>
+<main></main>
+<footer></footer>
+
+Shared klasörüne yeni bir sayfa aç ismi _Navbar.cshtml olsun.
+
+header tagına @Html.Partial("_Navbar") ile ekle.
+
+<div class="container mt-4">  //mt marjin vermek için kullanılır.
+
+.navbar.navbar-expand-sm.bg-primary.navbar-dar  enter yaparsak div içine class olarak tamamlar.
+ul.navbar-nav
+a.nav-link
+div.footer.py-3.mt-3  //py padding yani üstten alttan boşluk anlamında...
+
+div.list-group
+
+<div class="col-md-3">  //ekranı üçe böleriz.
+
+.card.mb-3
+
+~ (tilda) ana dizin anlamındadır.
+
+@Html.Raw(<p>Blabla</p>) // html etiketlerinide yorumlar.
+

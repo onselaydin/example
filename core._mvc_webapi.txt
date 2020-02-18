@@ -1,4 +1,8 @@
 vs.net 2019 gerekli
+odata makalesi
+https://medium.com/@sddkal/net-core-ve-odata-controller-13031b587db9
+https://devblogs.microsoft.com/odata/asp-net-core-odata-now-available/
+
 eklenti olarak .net core cross-platform development ekli olması gerekli.
 Yeni proje oluştur + asp.net core web application + webapi şablonunu seç
 Controller ilk isteğin alındığı yerdir. 
