@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
-import { ProductRepository } from './repository.model';
-import { Product } from './product.model';
+import { ProductRepository } from '../repository.model';
+import { Product } from '../product.model';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

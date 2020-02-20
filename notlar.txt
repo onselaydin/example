@@ -61,7 +61,7 @@ Not: Flat parametresi modülün app kökünde dosya olarak oluşmasını sağlar
 	 --module parametresi app.module.ts içine modülü import edecek.
 	 
 PS C:\MovieApp> ng serve --open //browserla beraber açar
-ng server --port 1111 --open diyerek istediğimiz portta açar.
+ng serve --port 1111 --open diyerek istediğimiz portta açar.
 
 örnek api servisleri
 http://jsonplaceholder.typicode.com
@@ -252,3 +252,13 @@ npm run json diyerek çalıştırırız.
 --json authentication--
 kimlik denetimi login işlemleri için kullanılacak...
 npm i jsonwebtoken
+
+--login componenti oluşturmak.
+>ng g component login
+
+
+--npm paketi kaldırma
+npm uninstall <package-name>
+npm u b bootstrap
+
+https://stackoverflow.com/questions/52176881/this-version-of-cli-is-only-compatible-with-angular-version-5-0-0-or-higher-erro
