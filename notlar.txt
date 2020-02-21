@@ -262,3 +262,12 @@ npm uninstall <package-name>
 npm u b bootstrap
 
 https://stackoverflow.com/questions/52176881/this-version-of-cli-is-only-compatible-with-angular-version-5-0-0-or-higher-erro
+
+Not: Bir component oluşturduğunda app.module.ts ye eklenir.
+https://getbootstrap.com/docs/3.3/components/
+
+npm install bootstrap
+npm install font-awesome
+style.css boostra ve font-awesome import et.
+@import "~boostrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";

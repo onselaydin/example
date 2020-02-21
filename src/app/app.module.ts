@@ -1,32 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SummaryPipe } from './summary.pipe';
-import { InputEmailDirective } from './input-email.directive';
-import { AdminProductsComponent } from './admin-products/admin-products.component';
-import { PostsComponent } from './posts/posts.component';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ProductComponent } from './product/product.component';
+import { NavComponent } from './nav/nav.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
-    PostsComponent,
-    SummaryPipe,
-    InputEmailDirective,
-    AdminProductsComponent,
-    LoginComponent,
-    
+    AppComponent,
+    ProductComponent,
+    NavComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-    
-  ],
-  exports:[
+    AppRoutingModule
   ],
   providers: [],
-  //bootstrap: []
+  bootstrap: [AppComponent] //bu uygulama bu component ile başlar demektir.
 })
 export class AppModule { }
