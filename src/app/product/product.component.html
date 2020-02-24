@@ -1,4 +1,17 @@
 <h3 *ngIf="products; else noproduct">{{title}}</h3>
+
+<div class="form-group">
+  <input 
+    class="form-control" 
+    id="productName"  
+    placeholder="Ara" 
+    [(ngModel)]="filterText" /><!-- two way binding -->
+
+  <small *ngIf="filterText" class="form-text text-muted">
+    <strong>{{filterText}}</strong> aradınız.
+  </small>
+</div>
+
 <ng-template #noproduct>
     
     <div class="alert alert-danger" role="alert">
@@ -6,12 +19,12 @@
       </div>
 </ng-template>
 <div class="row">
-    <div *ngFor="let prod of products" class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+    <div *ngFor="let prod of products | productFilter:filterText" class="card" style="width: 18rem;">
+        <img class="card-img-top" [src]="prod.imageUrl" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{prod.name}}</h5>
+          <h5 class="card-title">{{prod.name}}  {{prod.price | currency:'TRY':false}}</h5>
           <p class="card-text">{{prod.description}}</p>
-          <a href="#" class="btn btn-primary">{{name}}</a>
+          <a (click)="addToCart(prod)" class="btn btn-primary">{{name}}</a>
         </div>
       </div>
       

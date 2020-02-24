@@ -48,6 +48,9 @@ SERVİS EKLEMEK
 DİREKTİF EKLEMEK
 >ng g d direktifadi
 
+CUSTOM PİPE EKLEMEK
+>ng g pipe productFilter
+
 https://rxjs-dev.firebaseapp.com/
 ROUTE EKLEMEK
 app.component.ts ye
@@ -271,3 +274,24 @@ npm install font-awesome
 style.css boostra ve font-awesome import et.
 @import "~boostrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
+
+Not: export kelimesi dışarıdan erişim için gerekli. c# daki public gibidir.
+
+--Birim Testi--
+Not: Componentdeki spec.ts dosyası birim testi yapmak için kullanılır.
+
+-- Tip Güvenli Kodlama--
+Model oluşturmalıyız. örneğin componentin olduğu klasöre product.ts dosyası açılır.
+export class Product {
+  id:number;
+  name:string;
+  ...
+}
+
+--hight resulation photos--
+https://unsplash.com/
+
+An unhandled exception occurred: Port 4200 is already in use.
+netstat -ano | findstr :4200
+task manager pid nodejs çıktı.
+
