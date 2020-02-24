@@ -199,3 +199,4 @@ https://www.erkanliman.com/api/net-core-ve-redis-kullanarak-distributed-cache-me
 ab – Apache HTTP sunucusu başarım ölçme aracı” ile sunucumuza yük bindirelim.
 httpd-2.4.25-x64-vc14-rl\apache24\bin> .\ab.exe -n 300 -c 15 http://localhost:57967/api/students/1
 benchmark_normal.png
+
