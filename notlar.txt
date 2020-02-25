@@ -242,6 +242,9 @@ https://w3layouts.com/
 --json server--
 restfull backend için kullanılır.
 npm i json-server --save-dev
+npm install -g json-server 
+https://www.npmjs.com/package/json-server
+
 publish'in bir parçası olmaması için Bunları dependencies den silip dev içine atıyoruz.
     "json-server": "^0.15.1",
     "jsonwebtoken": "^8.5.1",
@@ -251,6 +254,7 @@ projenin kök klasörüne data.js dosyası oluştur...
 package.json dosyası script içine 
   "json": "json-server data.js -p 3500"   // 3500 nolu portdan data.js'i restfull olarak servis etmek..
 npm run json diyerek çalıştırırız.
+http://localhost:3000/products?name=Lenovo
 
 --json authentication--
 kimlik denetimi login işlemleri için kullanılacak...
@@ -294,4 +298,20 @@ https://unsplash.com/
 An unhandled exception occurred: Port 4200 is already in use.
 netstat -ano | findstr :4200
 task manager pid nodejs çıktı.
+
+-- Local ve Global servisler--
+herkesin sepeti ve içindeki ürünler farklıdır. Bu  local servis oluyor.
+
+--httpclientmodule--
+app.module.ts ye ekliyeceğiz.
+import { HttpClientModule } from '@angular/common/http'
+ve imports içine HttpClientModule ekle
+Akabinde veri çekeceğimiz componentimize geliyoruz 
+import { HttpClient } from '@angular/common/http' satırını en üste ekliyoruz.
+
+ngOnInit(): void {
+      this.http.get<Product[]>("http://localhost:3000/products").subscribe(x=> {
+        this.products = x;
+      });
+  }
 

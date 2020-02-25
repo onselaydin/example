@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "example": {
@@ -88,9 +88,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/alertifyjs/build/alertify.min.js"
+            ]
           }
         },
         "lint": {
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "example"
+    }
+  },
+  "defaultProject": "example",
+  "cli": {
+    "analytics": "6ee7ccee-a72d-4638-8774-7dc6410cbb91"
+  }
 }

@@ -22,7 +22,7 @@
     <div *ngFor="let prod of products | productFilter:filterText" class="card" style="width: 18rem;">
         <img class="card-img-top" [src]="prod.imageUrl" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{prod.name}}  {{prod.price | currency:'TRY':false}}</h5>
+          <h5 class="card-title">{{prod.name}}  {{prod.price}}</h5>
           <p class="card-text">{{prod.description}}</p>
           <a (click)="addToCart(prod)" class="btn btn-primary">{{name}}</a>
         </div>
