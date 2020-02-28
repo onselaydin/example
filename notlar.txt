@@ -318,8 +318,13 @@ ngOnInit(): void {
 
 
 --Angular Formları--ngForm--
+example uygulamasında product-add-form1
 <form #productAddForm="ngForm" (ngsubmit)="add(productAddForm)">
 </form>
+
+--Reactive Form--
+example uygulamasında product-add-form2
+import formbuilder
 
 
 --validation--

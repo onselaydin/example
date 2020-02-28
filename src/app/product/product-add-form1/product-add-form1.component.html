@@ -26,6 +26,6 @@
         <option *ngFor="let category of categories" [value]="category.id" >{{category.name}}</option>
     </select>
 </div>
-<div *ngIf="categoryId.invalid&&categoryId.dirty" class="alert alert-danger">Kategori Seç</div>
+<div *ngIf="categoryId.invalid&&categoryId.touched" class="alert alert-danger">Kategori Seç</div>
 <button type="submit" class="btn btn-primary" [disabled]="productAddForm.invalid">Ürün Ekle</button>
 </form>

@@ -1,3 +1,8 @@
 .productbox{
     padding: 15px;
 }
+img {
+    width: 200ox;
+    height: 200px;
+    object-fit: cover;
+}
