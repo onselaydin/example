@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { AlertifyService } from '../services/alertify.service';
 import { ProductService } from '../services/product.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private alerifyService:AlertifyService,
-    private productService:ProductService
+    private productService:ProductService,
+    private activatedRoute:ActivatedRoute  //route daki parametreyi yakalamak için
     ) { //Burada servisimizi inject ediyoruz
 
   }
@@ -27,9 +29,12 @@ export class ProductComponent implements OnInit {
       // this.http.get<Product[]>("http://localhost:3000/products").subscribe(x=> {
       //   this.products = x;
       // });
-      this.productService.getProducts().subscribe(x=>{
-        this.products = x;
+      this.activatedRoute.params.subscribe(params=>{
+        this.productService.getProducts(params["categoryId"]).subscribe(x=>{
+          this.products = x;
+        });
       });
+      
   }
 
   addToCart(prod){

@@ -10,10 +10,16 @@ import { tap, catchError } from 'rxjs/operators';
 export class ProductService {
 
   constructor(private http:HttpClient) { }
+  path = "http://localhost:3000/products";
 
   //not: observable bu servisi çağırdığımız yerde subscribe olabilir.
-  getProducts():Observable<Product[]>{
-    return this.http.get<Product[]>("http://localhost:3000/products").pipe(
+  getProducts(categoryId):Observable<Product[]>{
+    console.log(categoryId);
+    let newPath = this.path;
+    if(newPath){
+      newPath += "?categoryId="+categoryId
+    }
+    return this.http.get<Product[]>(newPath).pipe(
       tap(data=> console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );

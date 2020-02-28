@@ -255,6 +255,7 @@ package.json dosyası script içine
   "json": "json-server data.js -p 3500"   // 3500 nolu portdan data.js'i restfull olarak servis etmek..
 npm run json diyerek çalıştırırız.
 http://localhost:3000/products?name=Lenovo
+json-server --watch shop.json
 
 --json authentication--
 kimlik denetimi login işlemleri için kullanılacak...
@@ -315,3 +316,15 @@ ngOnInit(): void {
       });
   }
 
+
+--Angular Formları--ngForm--
+<form #productAddForm="ngForm" (ngsubmit)="add(productAddForm)">
+</form>
+
+
+--validation--
+invalid = bir veri girilmemişse
+dirty=inputun içine bişey yazdın sildin bu dirty oluyor.
+touched= inputun içine girdin bişey yazmadın...
+pristine = Form açıldı hiç dokunulmadı bu durumada pristine oluyor
+<div *ngIf="name.invalid&&name.dirty" class="alert alert-danger">Ürün adı giriniz</div>

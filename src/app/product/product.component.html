@@ -19,7 +19,7 @@
       </div>
 </ng-template>
 <div class="row">
-    <div *ngFor="let prod of products | productFilter:filterText" class="card" style="width: 18rem;">
+    <div *ngFor="let prod of products | productFilter:filterText" class="productbox" style="width: 18rem;">
         <img class="card-img-top" [src]="prod.imageUrl" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{prod.name}}  {{prod.price}}</h5>
