@@ -1,0 +1,4 @@
+[2020-02-29 19:47:20.734] [sharedprocess] [info] main {"machineId":"67ceec9f9768895a688987c0b53c8c94a561dee5dbeaf6f68822492e02e33687","windowId":2}
+[2020-02-29 19:47:25.525] [sharedprocess] [info] Deleted from disk ms-python.python /home/onsel/.vscode/extensions/ms-python.python-2019.1.0
+[2020-02-29 19:47:25.552] [sharedprocess] [info] Deleted from disk redhat.vscode-yaml /home/onsel/.vscode/extensions/redhat.vscode-yaml-0.2.1
+[2020-02-29 19:48:00.643] [sharedprocess] [info] Starting to clean up unused language packs.

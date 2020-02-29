@@ -5,8 +5,13 @@ Path Intellicense (path yazarken yardımcı olur.)
 Prettier - Code formatter
 TypeScript Hero
 
+--nodejs en yeni versiona güncellemek--
+sudo npm install -g n
+sudo n latest
+
 
 npm install -g @angular/cli komutu ile angular kurulur
+ng --version
 
 herşey boş bir klasör açıp içine yeni proje açılarak başlıyor...cmd mkdir yeniklasör...
 ng new projeadi
@@ -130,7 +135,7 @@ email = "onselaydin@gmail.com"
 ----------------------PIPE
 https://angular.io/api?type=pipe
 --Gelen veriyi formatlama
-title:string = 'Alışan Lojistik';
+title:string = 'Onsel.net';
 
 https://github.com/angular/angular.js/tree/master/src/ngLocale
 -----------------------------------------
