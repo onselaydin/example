@@ -1,0 +1,90 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Dell ES570",
+      "price": "4500",
+      "imageUrl": "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
+      "categoryId": "1",
+      "description": "idare eder."
+    },
+    {
+      "id": "2",
+      "name": "Lenovo",
+      "price": "8000",
+      "imageUrl": "https://images.unsplash.com/photo-1527434082571-c71226af7333?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "categoryId": "2",
+      "description": "lenovo dokanmatik"
+    },
+    {
+      "id": "3",
+      "name": "Apple",
+      "price": "10000",
+      "imageUrl": "https://images.unsplash.com/photo-1516163173352-d1c4d006f9ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "categoryId": "2",
+      "description": "idare eder."
+    },
+    {
+      "id": "4",
+      "name": "Asus",
+      "price": "5000",
+      "imageUrl": "https://images.unsplash.com/photo-1477327070293-75f15e291bb0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "categoryId": "1",
+      "description": "asus"
+    },
+    {
+      "id": "5",
+      "name": "Ibm",
+      "price": "6000",
+      "imageUrl": "https://images.unsplash.com/photo-1543269665-bd1bc9e6f296?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "categoryId": "3",
+      "description": "Ibm "
+    },
+    {
+      "id": "6",
+      "name": "Hp",
+      "price": "3500",
+      "imageUrl": "https://images.unsplash.com/photo-1543269665-bd1bc9e6f296?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "categoryId": "3",
+      "description": "Hp"
+    },
+    {
+      "name": "Samsung Note5",
+      "description": "Samsung",
+      "imageUrl": "https://images.unsplash.com/photo-1575718120842-54e388d8cc6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      "price": "2000",
+      "categoryId": "3",
+      "id": "n2PxV2z"
+    },
+    {
+      "name": "Pizza",
+      "price": "50",
+      "imageUrl": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80",
+      "categoryId": "5",
+      "description": "pizza",
+      "id": "e12_tDW"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Elektronik"
+    },
+    {
+      "id": "2",
+      "name": "Bilgisayar"
+    },
+    {
+      "id": "3",
+      "name": "İletişim"
+    },
+    {
+      "id": "4",
+      "name": "Müzik"
+    },
+    {
+      "id": "5",
+      "name": "Yiyecek"
+    }
+  ]
+}
