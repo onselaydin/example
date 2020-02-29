@@ -261,9 +261,35 @@ json-server --watch shop.json
 kimlik denetimi login işlemleri için kullanılacak...
 npm i jsonwebtoken
 
---login componenti oluşturmak.
+--- login componenti oluşturmak. Lokal storage kullanımı ---
+https://getbootstrap.com/docs/4.0/examples/floating-labels/
 >ng g component login
+Servis klasörüne bir 
+>ng g service account
+loggedIn = false;
+login(user:User):boolean{
+    if(user.userName=="onsel"&&user.password=="123456"){
+      return true;
+      this.loggedIn = true;
+      localStorage.setItem("isLogged",user.userName);
+    }
+    return false;
+}
+isLoggedIn() {
+    return this.loggedIn;
+  }
 
+  logOut(){
+    localStorage.removeItem("isLogged");
+    this.loggedIn = false;
+  }
+
+--CanActive Guard--
+Guardlar bir servis gibi çalışır. @Injectable deklarasyonu oluşturmalıyız.
+Login klasörüne login.guard.ts dosyası oluştur. example uygulamasında kodlar mevcut.
+account servisindeki isLoggedIn metodunu çağırdık ve routerda korumak istediğimiz komponente parametre ekledik.
+
+ÖNEMLİ NOT: Servisleri kullanmak istediğimizde app.module.ts ye providera eklememiz gerekmektedir.Çünkü her yerden kullanmak için.
 
 --npm paketi kaldırma
 npm uninstall <package-name>

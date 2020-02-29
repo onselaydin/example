@@ -10,7 +10,10 @@ import { CategoryComponent } from './category/category.component';
 import { ProductFilterPipe } from './product/product-filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductAddForm1Component } from './product/product-add-form1/product-add-form1.component';
-import { ProductAddForm2Component } from './product/product-add-form2/product-add-form2.component'
+import { ProductAddForm2Component } from './product/product-add-form2/product-add-form2.component';
+import { LoginComponent } from './login/login.component'
+import { AccountService } from './services/account.service';
+import { LoginGuard } from './login/login.guard';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { ProductAddForm2Component } from './product/product-add-form2/product-ad
     CategoryComponent,
     ProductFilterPipe,
     ProductAddForm1Component,
-    ProductAddForm2Component
+    ProductAddForm2Component,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { ProductAddForm2Component } from './product/product-add-form2/product-ad
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AccountService,LoginGuard],
   bootstrap: [AppComponent] //bu uygulama bu component ile başlar demektir.
 })
 export class AppModule { }
