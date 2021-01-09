@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Önsel AYDIN",
+      "salary": "6500",
+      "department": "Bilişim",
+      "id": "12nnj"
+    },
+    {
+      "name": "Yagmur AYDIN",
+      "salary": "30000",
+      "department": "Student",
+      "id": "3344kkjk"
+    },
+    {
+      "name": "Pınar AYDIN",
+      "salary": "4500",
+      "department": "Teacher",
+      "id": "5xj_dqf"
+    },
+    {
+      "name": "Şahinur AYDIN",
+      "salary": "2500",
+      "department": "Housewife",
+      "id": "Isv-jb7"
+    },
+    {
+      "name": "Ege Deniz",
+      "salary": "150",
+      "department": "Student",
+      "id": "N9T233W"
+    },
+    {
+      "name": "Cemal Alagöz",
+      "salary": "1500",
+      "department": "Comedian",
+      "id": "yAXghk3"
+    }
+  ]
+}

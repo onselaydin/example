@@ -9,6 +9,10 @@ TypeScript Hero
 sudo npm install -g n
 sudo n latest
 
+--TypeScript Kurulumu--
+npm install -g Typescript
+bir ts uzantılı dosyayı çalıştırmak için # tsc intro.ts
+bunun sonucunda bir js dosyası oluşur. Oluşan js dosyasını çalıştırmak için # nodemon intro.js 
 
 npm install -g @angular/cli komutu ile angular kurulur
 ng --version
@@ -334,7 +338,7 @@ task manager pid nodejs çıktı.
 -- Local ve Global servisler--
 herkesin sepeti ve içindeki ürünler farklıdır. Bu  local servis oluyor.
 
---httpclientmodule--
+--http client module--
 app.module.ts ye ekliyeceğiz.
 import { HttpClientModule } from '@angular/common/http'
 ve imports içine HttpClientModule ekle

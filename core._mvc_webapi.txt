@@ -2,10 +2,16 @@ vs.net 2019 gerekli
 odata makalesi
 https://medium.com/@sddkal/net-core-ve-odata-controller-13031b587db9
 https://devblogs.microsoft.com/odata/asp-net-core-odata-now-available/
+https://medium.com/faun/asp-net-core-entity-framework-core-with-postgresql-code-first-d99b909796d7
+https://medium.com/@sefikcankanber/automapper-nedir-ne-ama%C3%A7la-kullan%C4%B1l%C4%B1r-a3a2ad1a4d62
+https://github.com/Radu-Raicea/Dockerized-Flask/wiki/%5BDocker%5D-Access-the-PostgreSQL-command-line-terminal-through-Docker
+https://www.gitignore.io/
+https://www.md5hashgenerator.com/
 
 eklenti olarak .net core cross-platform development ekli olması gerekli.
 Yeni proje oluştur + asp.net core web application + webapi şablonunu seç
 Controller ilk isteğin alındığı yerdir. 
+
 
 [Route("api/[Controller])]  //domaini karşılar. http://localhost/api/controlleradimiz.
 köşel parantez içi Controller parametredir.
@@ -50,6 +56,12 @@ appsettings.json a git. Bu mvc deki web.config gibidir.
 --Startup.cs e gel--
 ConfigureServices metoduna gel.
 services.AddDbContext<DataContext>(x=>x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")))
+
+NOT: Model, datacontext, appsetting vs oluşturduktan sonra aşağıdaki komutlarla migration yaparak
+tablolarımızı oluşturabiliriz.
+PM> enable-migrations
+PM> add-migration initial
+PM> update-database
 
 
 --Controller--
@@ -152,7 +164,17 @@ var cities = _appRepository.GetCities().Select(x=>new CityForListDto{Description
 nugettan AutoMapper ve AutoMapper.Extensions kur.
 Proje kökünde helpers isimli bir klasör oluştur.
 YEni class oluştur adına AutoMapperProfiles ver.
- 
+startup.cs de configureservice eklemeyi unutma...
+ services.AddAutoMapper();
+
+Ekleme işleminde [FromBody] metoduna postman ile veri gönderirken,
+http://localhost:64104/api/cities/add post seçtikten sonra Body seçiyoruz + Raw seçiyoruz. + Json seçiyoruz.
+{
+    "name:":"İstanbul",
+    "description":"taşı toprağı altın",
+    "userid":"1"
+}
+gibi gönderiyoruz.
 
 
 postgressql vs.code eklentisi.
@@ -172,3 +194,22 @@ psql -d testdb -U  user -W
 # createdb VERITABANI_ADI
 # \c veritabanı //bir veritabanına bağlanmak.
 https://mertcangokgoz.com/postgresql-komut-ve-kisayollari/
+
+--JWT (Json web Token) --
+-Microsoft.AspNetCore.Authentication.JwtBearer nuget dan kur.
+-Startup.cs e gel ConfigurationServices metodunun en altına
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme); satırını ekle.
+Kodun devamı https://github.com/onselaydin/WebApiTest.git uygulamasında var.
+-Akabinde bir extensions yazacağız. Helper Klasöründe var.
+appsettings.json dosyasına alttaki gibi token oluştur.
+"AppSettings": {
+    "Token": "onselyagmur"
+  },
+-Startup.cs de mvc satırının üstüne app.UseAuthentication(); satırını ekle.
+
+--Resimleri bir yerde tutmak için aşağıdaki servisi kullanıcağız--
+https://cloudinary.com/users/register/free
+https://cloudinary.com/documentation
+nuget dan cloudinaryDotNet official olanı kur.
+
+https://itnext.io/deploy-a-nodejs-and-expressjs-app-on-digital-ocean-with-nginx-and-free-ssl-edd88a5580fa
